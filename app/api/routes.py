@@ -138,7 +138,7 @@ def send_request(transaction,token):
         "datetime": transaction.datetime,
         "deposit_token": token,
         "quantity": transaction.quantity,
-        "seller": 0
+        "seller": GROUP_ID
     }
     client.connect(HOST, PORT)
     client.publish(REQUESTS_TOPIC, json.dumps(broker_message))
@@ -150,7 +150,7 @@ def send_validation(transaction):
     broker_message = {
         "request_id": request_id,
         "group_id": GROUP_ID,
-        "seller": 0,
+        "seller": GROUP_ID,
         "valid": is_valid
     }
     client.connect(HOST, PORT)
